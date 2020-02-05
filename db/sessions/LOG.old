@@ -1,5 +1,5 @@
-2020/01/29-17:16:39.728 4ac8 Recovering log #564
-2020/01/29-17:16:39.764 4ac8 Level-0 table #567: started
-2020/01/29-17:16:39.964 4ac8 Level-0 table #567: 794 bytes OK
-2020/01/29-17:16:40.139 4ac8 Delete type=0 #564
-2020/01/29-17:16:40.139 4ac8 Delete type=3 #562
+2020/01/29-18:03:54.221 3dec Recovering log #568
+2020/01/29-18:03:54.236 3dec Level-0 table #570: started
+2020/01/29-18:03:54.455 3dec Level-0 table #570: 645 bytes OK
+2020/01/29-18:03:54.738 3dec Delete type=0 #568
+2020/01/29-18:03:54.739 3dec Delete type=3 #566
