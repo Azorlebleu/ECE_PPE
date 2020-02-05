@@ -1,0 +1,19 @@
+N# : "{
+    "ID" #
+    "ID-PP": "{
+        *
+    }"
+    "ID-CP": "{
+        *
+    }"
+}"
+
+"PAT_N#_ID*":"{
+    "ID": *
+    "Name": "/"
+    "Age": "/"
+    "Address": "/"
+    "Phone Number": "/"
+    "Notes": "/"
+    "Time require": "/"
+}"
