@@ -1,31 +1,35 @@
 import { LevelDB } from './leveldb'
 import WriteStream from 'level-ws'
-import { NOTFOUND } from 'dns';
-import { ok } from 'assert';
 
-export class Metric {
-  public timestamp: string
-  public value: number
 
-  constructor(ts: string, v: number) {
-    this.timestamp = ts
-    this.value = v
+export class Nurse {
+  public ID: number
+  public ID_PP: number[]
+  public ID_CP: number[]
+  public NAME: string
+
+  constructor(id: number, id_pp: number[], id_cp: number[], name: string) {
+    this.ID = id
+    this.ID_PP = id_pp
+    this.ID_CP = id_cp 
+    this.NAME = name
   }
 }
 
-export class MetricsHandler {
+export class NurseHandler {
   public db: any
 
   constructor(dbPath: string) {
     this.db = LevelDB.open(dbPath)
   }
+
   public see_all(callback: (error: Error | null, result?: any[]) => void) {
     const stream = this.db.createReadStream()
-    var arr: any[] = []
 
+    var arr: any[] = []
+    
     stream.on('error', callback)
       .on('data', (data: any) => {
-
         arr.push(data)
 
       })
@@ -39,22 +43,25 @@ export class MetricsHandler {
 	"value" : 11
   }
 */
-  public save(key: string, metrics: any, callback: (error: Error | null, result?: []) => void) {
+
+//N1, N2, N3,...
+  public save(key: number, nurse: Nurse, callback: (error: Error | null, result?: []) => void) {
 
     const stream = WriteStream(this.db)
+
     stream.on('error', callback)
     stream.on('close', callback)
-      stream.write({ key: `metric:${key}:${metrics.timestamp}`, value: Number(metrics.value) })
+    console.log(nurse)
+    stream.write({ key: `N${key}`, value: nurse })
 
-    stream.end()
-    
+    stream.end() 
   }
 
-  public getMetricsUser(key: String, callback: (error: Error | null, result?: Metric[]) => void) {
+  public getMetricsUser(key: String, callback: (error: Error | null, result?: Nurse[]) => void) {
 
     //creates a read stream
     const stream = this.db.createReadStream()
-    let met : Metric[]
+    let met : Nurse[]
     stream.on('error', callback)
       .on('data', (data: any) => {
 
@@ -63,7 +70,7 @@ export class MetricsHandler {
         const value = data.value
         if (key == k) {
         
-          met.push(new Metric(timestamp, value))
+          //met.push(new Nurse(timestamp, value))
         }
       })
       .on('end', (err: Error) => {
@@ -74,16 +81,17 @@ export class MetricsHandler {
   public saveUser(params: any, callback: (error: Error | null, result?: any) => void) {
     console.log("Creating a new user with params ", params)
     const stream = WriteStream(this.db)
-    stream.on('end', callback(null, { ok: ok }))
+    //stream.on('end', callback(null, { ok: ok }))
     stream.write({ key: `user:${params.username}`, value: { email: `${params.email}`, password: `${params.password}` } })
     stream.on('error')
     stream.end()
   }
-  public get(key: string, callback: (err: Error | null, result?: Metric[]) => void) {
+
+  public get(key: string, callback: (err: Error | null, result?: Nurse[]) => void) {
     //creates a read stream
 
     const stream = this.db.createReadStream()
-    var met: Metric[] = []
+    var met: Nurse[] = []
 
     stream.on('error', callback)
       .on('data', (data: any) => {
@@ -92,15 +100,13 @@ export class MetricsHandler {
         const [_, k, timestamp] = data.key.split(":")
         const value = data.value
         if (key == k) { 
-          met.push(new Metric(timestamp, value))
+         // met.push(new Metric(timestamp, value))
         }
       })
       .on('end', (err: Error) => {
         callback(null, met)
       })
   }
-
-
 
   public delete(key: number, callback: (err: Error | null) => void) {
 
@@ -122,6 +128,7 @@ export class MetricsHandler {
         callback(null)
       })
   }
+
   public deleteOne(params, callback: (err: Error | null) => void) {
 
     const stream = this.db.createReadStream()

@@ -7,6 +7,7 @@ import { UserHandler, User } from './users'
 import { cpus } from 'os'
 import session = require('express-session')
 import levelSession = require('level-session-store')
+import { Nurse, NurseHandler } from './nurse'
 var cookieParser = require('cookie-parser')
 
 
@@ -30,6 +31,7 @@ app.use(session({
 }))
 const dbMet: MetricsHandler = new MetricsHandler('./db/metrics')
 const dbUser: UserHandler = new UserHandler('./db/users')
+const dbNurse: NurseHandler = new NurseHandler('./db/nurses')
 
 //Sessions
 
@@ -137,7 +139,7 @@ app.get('/api/allUsers', (req: any, res: any) => {
   })
 })
 app.get('/api/all', (req: any, res: any) => {
-  dbMet.see_all((err: Error | null, result?: any) => {
+  dbNurse.see_all((err: Error | null, result?: any) => {
     if (err) throw err
     res.json(result)
   })
@@ -164,6 +166,23 @@ app.post('/api/metrics/:id', (req: any, res: any) => {
   })
 })
 
+/*
+N# : "{
+  "ID" #
+  "ID_PP": "{
+      *
+  }"
+  "ID_CP": "{
+      *
+  }"
+}"
+*/
+app.post('/api/new-nurse/', (req: any, res: any) => {
+  console.log("Saving nurse")
+  dbNurse.save(2, req.body, (err: Error | null) => {
+    if (err) throw err
+  })
+})
   //delete one user
   //use id = "4ll" to erase everything (dev)
   app.delete('/api/delete/user/:id', (req: any, res: any) => {
