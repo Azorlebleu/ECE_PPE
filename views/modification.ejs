@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+   
+<head>
+    <meta charset="utf-8">
+    <title>Modification of metrics </title>
+</head>
+
+
+<body>
+    <script>
+    function sendReqDel(user, timestamp){
+        url = `http://localhost:8080/api/delete/metrics/${user}/${timestamp}`
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', url, true);
+        xhr.send();
+        location.reload();
+    }
+    </script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable(<%- JSON.stringify(arr) %>);
+
+        var options = {
+          title: 'Value depending on timestamp',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        if (<%=arr.length%> > 1)
+        {
+            chart.draw(data, options);
+        }
+        if(<%=arr.length%> <=1)
+        {
+            document.getElementById("no_data").innerHTML = "<h1>No data to display.</h1>"
+        }
+                    
+      }
+      
+    </script>
+    <h1>Hello <%=name%> !</h1>
+    <h2>Here are your metrics. (and not others' !!)</h2>
+    <ul id="langages">
+    </ul>
+    <button class="btn btn-danger" href="/logout" onClick='document.location.href="/logout"'>
+        Logout
+      </button>
+    
+</body>
+<div id="no_data"></div>
+<div id="curve_chart" style="width: 900px; height: 400px"></div> 
+<p>
+    <body>    
+        <table> 
+            <tr>
+                <th>Timestamp</th>
+                <th>Value</th>
+                <th>Remove</th>
+            </tr>
+            <% result.forEach((item)=>{%> 
+            <tr>
+                <td><%=item.timestamp%></td>
+                <td><%=item.value%></td>
+                <td><button onClick="sendReqDel('<%= name %>', <%= item.timestamp%>)">X</button></td>  
+            </tr></li>  
+            <%});%> 
+            <form action="http://localhost:8080/api/metrics/<%=name%>" method="POST">
+            <tr>
+                <td><input value="1572876000000" type="text" name="timestamp" id="timestamp"></td> 
+                <td ><input value="10" type="text" name="value" id="name"></td > 
+                <td><button type="submit" id="submit">Send</button></td> 
+            </tr>
+        </form>
+            </table> 
+    </body> 
+</p>
+
+</html>
