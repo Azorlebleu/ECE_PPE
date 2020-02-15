@@ -1,0 +1,30 @@
+Sample : 
+
+|        Nom         |  Localisation  | Min hour | Max hour |
+| :----------------: | :------------: | :------: | :------: |
+|      Besnard       |    Sonchamp    |   7h30   |    9h    |
+|      Coutrou       | Clairefontaine |   null   |    9h    |
+|      Leresle       |   St Arnoult   |    8h    |   8h15   |
+|     Dos Santos     |   St Arnoult   |    8h    |   8h30   |
+|      Rouanet       |   St Arnoult   |    8h    |   8h30   |
+|       Miolo        |   St Arnoult   |   8h15   |   8h45   |
+|      Mufflat       |  Ponthévrard   |    9h    |   9h30   |
+|      Norture       |   La Hunière   |   9h15   |   9h30   |
+|       Durand       |   La Hunière   |    9h    |   9h30   |
+|     Coquantin      |   La Hunière   |    8h    |   10h    |
+|     Malichard      |   La Hunière   |    9h    |   10h    |
+|       Henry        |    Greffier    |   10h    |   null   |
+|      Resnier       |    Greffier    |   null   |   null   |
+|      Hubbard       |    Orcemont    |   10h    |   null   |
+|       Ramos        |    Orcemont    |   10h    |   null   |
+|       Piquet       |   L'Epinaye    |   10h    |   null   |
+|       Lepied       |   L'Epinaye    |   10h    |  10h30   |
+|       Massé        |  Beaudicourt   |  10h30   |   null   |
+|       Huand        |    Sonchamp    |  10h30   |   null   |
+|     Beaudesson     |    Sonchamp    |  10h30   |   null   |
+|       Orlach       |    Sonchamp    |  11h30   |   12h    |
+|       Braga        | Clairefontaine |   null   |   null   |
+| Rouanet (2nd time) |   St Arnoult   |  11h30   |  12h30   |
+|  Miolo (2nd time)  |   St Arnoult   |   12h    |   13h    |
+|       Lebel        |   St Arnoult   |    9h    |   null   |
+

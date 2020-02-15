@@ -1,18 +1,21 @@
 import { LevelDB } from './leveldb'
 import WriteStream from 'level-ws'
 
+import bcrypt from 'bcrypt';
 
 export class Nurse {
   public ID: number
   public ID_PP: number[]
   public ID_CP: number[]
   public NAME: string
+  public PASSWORD: string
 
-  constructor(id: number, id_pp: number[], id_cp: number[], name: string) {
+  constructor(id: number, id_pp: number[], id_cp: number[], name: string, password: string) {
     this.ID = id
     this.ID_PP = id_pp
     this.ID_CP = id_cp 
     this.NAME = name
+    this.PASSWORD = password
   }
 }
 
@@ -38,11 +41,6 @@ export class NurseHandler {
       })
   }
 
-  /*works for only 1 element, like {
-	"timestamp": 11111,
-	"value" : 11
-  }
-*/
 
 //N1, N2, N3,...
   public save(key: number, nurse: Nurse, callback: (error: Error | null, result?: []) => void) {
@@ -51,7 +49,9 @@ export class NurseHandler {
 
     stream.on('error', callback)
     stream.on('close', callback)
-    console.log(nurse)
+    console.log(nurse, key)
+    delete nurse.ID;
+    console.log(nurse, key)
     stream.write({ key: `N${key}`, value: nurse })
 
     stream.end() 

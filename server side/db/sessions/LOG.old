@@ -1,5 +1,5 @@
-2020/02/05-18:27:23.080 ec4 Recovering log #590
-2020/02/05-18:27:23.080 ec4 Level-0 table #593: started
-2020/02/05-18:27:23.269 ec4 Level-0 table #593: 187 bytes OK
-2020/02/05-18:27:23.431 ec4 Delete type=0 #590
-2020/02/05-18:27:23.431 ec4 Delete type=3 #588
+2020/02/12-23:49:07.267 4eb0 Recovering log #662
+2020/02/12-23:49:07.267 4eb0 Level-0 table #664: started
+2020/02/12-23:49:07.714 4eb0 Level-0 table #664: 321 bytes OK
+2020/02/12-23:49:07.863 4eb0 Delete type=0 #662
+2020/02/12-23:49:07.863 4eb0 Delete type=3 #660

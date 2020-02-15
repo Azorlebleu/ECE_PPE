@@ -5,3 +5,4 @@ declare module 'leveldown'
 declare module 'levelup'
 declare module 'level-ws'
 declare module 'request-promise-native'
+declare module 'bcrypt';

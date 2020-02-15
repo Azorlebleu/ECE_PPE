@@ -1,1 +1,5 @@
 server side/node_modules/
+server side/db/nurses/
+server side/db/metrics/
+server side/db/users/
+server side/db/sessions/

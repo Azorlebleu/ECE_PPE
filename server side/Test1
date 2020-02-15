@@ -1,9 +1,12 @@
 N# : "{
     "ID" #
-    "ID-PP": "{
+    "ID-PP": "{ //list IDs of the punctual patients
         *
     }"
     "ID-CP": "{
+        *
+    }"
+    "NAME": "{
         *
     }"
 }"

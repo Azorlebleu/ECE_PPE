@@ -10,7 +10,6 @@ import levelSession = require('level-session-store')
 import { Nurse, NurseHandler } from './nurse'
 var cookieParser = require('cookie-parser')
 
-
 const app = express()
 const port: string = process.env.PORT || '8080'
 
@@ -178,10 +177,23 @@ N# : "{
 }"
 */
 app.post('/api/new-nurse/', (req: any, res: any) => {
-  console.log("Saving nurse")
-  dbNurse.save(2, req.body, (err: Error | null) => {
+  console.log("Saving nurse :", req.body)
+
+  dbNurse.save(req.body.ID, req.body, (err: Error | null) => {
     if (err) throw err
   })
+})
+
+app.get('/api/rootme/:aha', (req: any, res: any) =>
+{
+  console.log(req.url);
+  res.send("ok")
+})
+app.post('/tests', (req: any, res: any) =>
+{
+  console.log("new request")
+  console.log(req.url, req.body)
+  res.write("haha");
 })
   //delete one user
   //use id = "4ll" to erase everything (dev)
