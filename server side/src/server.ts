@@ -8,6 +8,7 @@ import { cpus } from 'os'
 import session = require('express-session')
 import levelSession = require('level-session-store')
 import { Nurse, NurseHandler } from './nurse'
+import { PatientHandler } from './ppatient'
 var cookieParser = require('cookie-parser')
 
 const app = express()
@@ -31,6 +32,7 @@ app.use(session({
 const dbMet: MetricsHandler = new MetricsHandler('./db/metrics')
 const dbUser: UserHandler = new UserHandler('./db/users')
 const dbNurse: NurseHandler = new NurseHandler('./db/nurses')
+const dbPatient: PatientHandler = new PatientHandler('./db/patient')
 
 //Sessions
 
