@@ -1,0 +1,62 @@
+N# : "{
+    "ID" #
+    "ID-PP": "{ //list IDs of the punctual patients
+        *
+    }"
+    "ID-CP": "{
+        *
+    }"
+    "NAME": "{
+        *
+    }"
+}"
+
+"PAT_N#_ID*":"{
+    "ID": *
+    "Name": "/"
+    "Age": "/"
+    "Address": "/"
+    "Phone Number": "/"
+    "Notes": "/"
+    "Time require": "/"
+}"
+
+//how to save a nurse :
+
+/*
+endpoint :
+    METHOD : POST 
+    path : /api/new-nurse/
+    body : {
+	"ID":2,
+	"ID_P":[
+		1,2,3
+		],
+	"NAME":"loulou"
+}
+
+reply : 
+    if OK : 200
+    if ERROR : smth else
+
+
+*/
+
+
+{
+    "patient_list":[
+        {
+            "id_p":1,
+            "min_hour":"7h",
+            "max_hour":"10h",
+            "duration":"15min"
+        },
+        {
+
+        },
+        {
+
+        }
+    ]
+
+}

@@ -5,15 +5,13 @@ import bcrypt from 'bcrypt';
 
 export class Nurse {
   public ID: number
-  public ID_PP: number[]
-  public ID_CP: number[]
+  public ID_P: number[]
   public NAME: string
   public PASSWORD: string
 
-  constructor(id: number, id_pp: number[], id_cp: number[], name: string, password: string) {
+  constructor(id: number, id_p: number[], name: string, password: string) {
     this.ID = id
-    this.ID_PP = id_pp
-    this.ID_CP = id_cp 
+    this.ID_P = id_p
     this.NAME = name
     this.PASSWORD = password
   }
