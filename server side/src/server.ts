@@ -139,12 +139,20 @@ app.get('/api/allUsers', (req: any, res: any) => {
     res.json(result)
   })
 })
-app.get('/api/all', (req: any, res: any) => {
+app.get('/api/all-nurses', (req: any, res: any) => {
   dbNurse.see_all((err: Error | null, result?: any) => {
     if (err) throw err
     res.json(result)
   })
 })
+
+app.get('/api/all-patients', (req: any, res: any) => {
+  dbPatient.see_all((err: Error | null, result?: any) => {
+    if (err) throw err
+    res.json(result)
+  })
+})
+
 //cRud
 app.get('/api/metrics/:id/', (req: any, res: any) => {
     dbMet.get(req.params, (err: Error | null, result?: any) => {
@@ -182,6 +190,14 @@ app.post('/api/new-nurse/', (req: any, res: any) => {
   console.log("Saving nurse :", req.body)
 
   dbNurse.save(req.body.ID, req.body, (err: Error | null) => {
+    if (err) throw err
+  })
+})
+
+app.post('/api/new-patient/', (req: any, res: any) => {
+  console.log("Saving patient :", req.body)
+
+  dbPatient.save(req.body.ID, req.body, (err: Error | null) => {
     if (err) throw err
   })
 })
