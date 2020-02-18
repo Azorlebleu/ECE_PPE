@@ -5,22 +5,27 @@ import random as rd
 tableau_patients = []
 x = 0
 n = 25
-"""
-tableau_patients.append( [[x, 5, 4, 1, 4, 7], [0, 20]])
-tableau_patients.append( [[5, x, 3, 4, 2, 8], [0, 30]])
-tableau_patients.append( [[4, 3, x, 4, 3, 2], [30, 40]])
-tableau_patients.append( [[1, 4, 4, x, 5, 6], [20, 40]])
-tableau_patients.append( [[4, 2, 3, 5, x, 2], [10, 40]])
-tableau_patients.append( [[7, 8, 2, 6, 2, x], [30, 50]])
-"""
+
+tableau_patients.append( [[x, 5, 4, 1, 4, 7, 4, 2, 1, 8, 2], [0, 20]])
+tableau_patients.append( [[5, x, 3, 4, 2, 8, 1, 5, 5, 6, 9], [0, 30]])
+tableau_patients.append( [[4, 3, x, 4, 3, 2, 7, 9, 10, 1, 2], [30, 40]])
+tableau_patients.append( [[1, 4, 4, x, 5, 6, 5, 3, 4, 1, 4], [20, 40]])
+tableau_patients.append( [[4, 2, 3, 5, x, 2, 4, 7, 8, 2, 1], [10, 20]])
+tableau_patients.append( [[7, 8, 2, 6, 2, x, 1, 3, 4, 5, 4], [60, 70]])
+tableau_patients.append( [[2, 3, 4, 5, 8, 1, x, 8, 2, 4, 5], [20, 50]])
+tableau_patients.append( [[6, 2, 6, 3, 4, 1, 5, x, 0, 6, 5], [30, 50]])
+tableau_patients.append( [[7, 0, 1, 2, 11, 7, 12, 4, x, 9, 6], [50, 70]])
+tableau_patients.append( [[9, 10, 11, 10, 3, 12, 1, 5, 3, x, 1], [30, 50]])
+tableau_patients.append( [[5, 3, 2, 0, 4, 12, 12, 11, 9, 11, x], [20, 50]])
+
 def make_random_patients(n):
-    max_time=360
+    max_time=420
     for i in range(n):
         distances = []
         a = rd.randint(0, max_time)
         b = 30
         if (a - b < 0 ):
-            lower_bound = 0
+            lower_bound = 05
         else:
             lower_bound = a - b
         
@@ -31,7 +36,7 @@ def make_random_patients(n):
         for j in range(n):
             distances.append(rd.randint(2,10))
         tableau_patients.append([distances, [lower_bound, upper_bound] ])
-make_random_patients(n)
+#make_random_patients(n)
 
 def trouver_min():
     min = res[0][1]
@@ -295,22 +300,32 @@ def calc_temps(M,seq):
     return somme
     
 def retirer_similaires_plus_longs(tab):
-        a_enlever = []
-        for i in range(len(tab)):
-            for j in range(i+1,len(tab)):
-                if test_similaire(tab[i],tab[j]):
-                    d1 = calc_temps(tableau_patients, tab[i])
-                    d2 = calc_temps(tableau_patients, tab[j])
-                    if d1 > d2:
-                        if i not in a_enlever:
-                            a_enlever.append(i)
-                    if d2 > d1:
-                        if j not in a_enlever:
-                            a_enlever.append(j)
-        a_enlever.sort()
-        for i in range(len(a_enlever)):
-            tab.pop(a_enlever[-i-1])
-        return(tab)
+    temps_debut = 0
+    a_enlever = []
+    for i in range(len(tab)):
+        for j in range(i+1,len(tab)):
+            
+            #temps : 4
+            a = test_similaire(tab[i],tab[j])
+            
+            if a:
+                #temps : 1.5
+                d1 = calc_temps(tableau_patients, tab[i])
+                d2 = calc_temps(tableau_patients, tab[j])
+                
+                
+                #temps : 8
+                if d1 > d2:
+                    a_enlever.append(i)
+                if d2 > d1:
+                    a_enlever.append(j)
+
+    #temps : négligeable
+    a_enlever = list(set(a_enlever))
+    a_enlever.sort()
+    for i in range(len(a_enlever)):
+        tab.pop(a_enlever[-i-1])
+    return(tab)
                         
 def show_similaire(tab):
     start_time = time.time()
@@ -361,6 +376,8 @@ def supprimer_sequences_non_realistes(tab):
         
         
 def main():
+    start_time = time.time()
+    similaire_time = 0
     #prend tous les impératifs en un tableau d'intervalles
     imperatifs = tableau_imperatifs()
     #prend tous les patients pour chaque intervalle
@@ -371,6 +388,7 @@ def main():
     voeux = []
     #matrice des distances
     M = np.zeros((n,n))
+    mult = 1
     print("Imperatifs de temps : ", imperatifs)
     for i in range (len(imperatifs)):
   
@@ -378,9 +396,11 @@ def main():
 
         #prend la liste de patients pour cet intervalle
         patients = tous_patients[i]
+        print("Nombre de patients dans cet intervalle :", len(tous_patients[i]))
         #calcule toutes les possibilites pour ces patients
         all_possibilites = toutes_possibilites(patients, intervalle[1])
         #greffe les possibilités aux séquences retenues du précédent intervalle
+        
         sequence_ancien_intervalle = creer_toutes_nouvelles_possibilites(sequence_ancien_intervalle, all_possibilites)
 
         sequence_ancien_intervalle = retirer_sequences_patients_oublies(sequence_ancien_intervalle, intervalle[1], tableau_patients)
@@ -389,7 +409,9 @@ def main():
         #ajoute les distances dont l'on a besoin à une matrice comportant toutes les distances calculées jusque là
         M = matrice_dist(voeux, M)
         #parmi deux séquences similaires, ne garder que la plus rapide
+        partial_time = time.time()
         sequence_ancien_intervalle = retirer_similaires_plus_longs(sequence_ancien_intervalle)
+        similaire_time += time.time() - partial_time
         #supprimer les séquences où la plage horaire d'un patient n'est pas respectée   
         """
         supprimer_sequences_non_realistes()
@@ -397,6 +419,7 @@ def main():
         print("Intervalle de temps considéré : ", intervalle)
         #print("Séquences possibles: ", sequence_ancien_intervalle)
         print("Nombre de séquences possibles :", len(sequence_ancien_intervalle))
+        mult = mult + fact(len(tous_patients[i]))*(len(sequence_ancien_intervalle))
       
     min = calc_temps(tableau_patients,sequence_ancien_intervalle[0])
     res = [sequence_ancien_intervalle[0], min]
@@ -406,5 +429,9 @@ def main():
             res = [sequence_ancien_intervalle[i], min]
     
     print("\n\nRESULTAT FINAL :",res)
-    print(M)
+    #print la matrice
+    #print(M)
+    print(fact(10)/(2*mult))
+    print("Temps d execution : %s secondes ---" % (time.time() - start_time))
+    print("Temps d execution de la fonction retirer_similaire: %s secondes ---" % (similaire_time))
 main()
