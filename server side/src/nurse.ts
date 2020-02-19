@@ -28,7 +28,7 @@ export class NurseHandler {
     const stream = this.db.createReadStream()
 
     var arr: any[] = []
-    
+
     stream.on('error', callback)
       .on('data', (data: any) => {
         arr.push(data)
@@ -40,26 +40,29 @@ export class NurseHandler {
   }
 
 
-//N1, N2, N3,...
-  public save(key: number, nurse: Nurse, callback: (error: Error | null, result?: []) => void) {
+  //N1, N2, N3,...
+  public save(key: number, nurse: any, callback: (error: Error | null, result?: []) => void) {
 
     const stream = WriteStream(this.db)
 
     stream.on('error', callback)
     stream.on('close', callback)
     console.log(nurse, key)
-    delete nurse.ID;
+    delete nurse.id_nurse;
     console.log(nurse, key)
-    stream.write({ key: `N${key}`, value: nurse })
-
-    stream.end() 
+    let myjson = {
+      key: `N${key}`,
+      value: nurse
+    }
+    stream.write(myjson)
+    stream.end()
   }
 
   public getMetricsUser(key: String, callback: (error: Error | null, result?: Nurse[]) => void) {
 
     //creates a read stream
     const stream = this.db.createReadStream()
-    let met : Nurse[]
+    let met: Nurse[]
     stream.on('error', callback)
       .on('data', (data: any) => {
 
@@ -67,7 +70,7 @@ export class NurseHandler {
         const [_, k, timestamp] = data.key.split(":")
         const value = data.value
         if (key == k) {
-        
+
           //met.push(new Nurse(timestamp, value))
         }
       })
@@ -97,8 +100,8 @@ export class NurseHandler {
         //for each data, we will fire this function
         const [_, k, timestamp] = data.key.split(":")
         const value = data.value
-        if (key == k) { 
-         // met.push(new Metric(timestamp, value))
+        if (key == k) {
+          // met.push(new Metric(timestamp, value))
         }
       })
       .on('end', (err: Error) => {
@@ -106,49 +109,23 @@ export class NurseHandler {
       })
   }
 
-  public delete(key: number, callback: (err: Error | null) => void) {
+  public delete(id_nurse: number, callback: (err: Error | null) => void) {
 
     const stream = this.db.createReadStream()
     stream.on('error', callback)
       .on('data', (data: any) => {
-
-        //for each data, we will fire this function
-        const [_, k, timestamp] = data.key.split(":")
-        const value = data.value
-        if (key != k) {
-          console.log(`Data ${k} does not match key ${key} and won't be deleted`)
-        } else {
-          console.log(`Data ${k} match the key ${key} and will be deleted`)
-          this.db.del(data.key)
-        }
-      })
-      .on('end', (err: Error) => {
-        callback(null)
-      })
-  }
-
-  public deleteOne(params, callback: (err: Error | null) => void) {
-
-    const stream = this.db.createReadStream()
-    let username = params.id
-    let timestamp = params.timestamp
-    stream.on('error', callback)
-      .on('data', (data: any) => {
-
-        //for each data, we will fire this function
-        const [_, usr, tmstmp] = data.key.split(":")
-        const value = data.value
-        if (usr != username || tmstmp != timestamp) {
-          
-        } else {
-          console.log(`Timestamp ${timestamp} for user ${username} will be deleted`)
-          this.db.del(data.key)
-        }
-      })
-      .on('end', (err: Error) => {
-        callback(null)
+        let key = "N" + id_nurse;
+        console.log("Trying to delete " + key)
+        const stream = this.db.createReadStream()
+        stream.on('error', callback)
+          .on('data', (data: any) => {
+            if (data.key = key) {
+              this.db.del(key)
+            }
+          })
+          .on('end', (err: Error) => {
+            callback(null)
+          })
       })
   }
-
-
 }
