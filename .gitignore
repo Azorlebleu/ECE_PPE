@@ -3,3 +3,20 @@ server side/db/nurses/
 server side/db/metrics/
 server side/db/users/
 server side/db/sessions/
+
+
+front side/TRAVHELP2/*.iml
+front side/TRAVHELP2/.gradle
+front side/TRAVHELP2//local.properties
+front side/TRAVHELP2//.idea/caches
+front side/TRAVHELP2//.idea/libraries
+front side/TRAVHELP2//.idea/modules.xml
+front side/TRAVHELP2//.idea/workspace.xml
+front side/TRAVHELP2//.idea/navEditor.xml
+front side/TRAVHELP2//.idea/assetWizardSettings.xml
+front side/TRAVHELP2/.DS_Store
+front side/TRAVHELP2//build
+front side/TRAVHELP2//captures
+front side/TRAVHELP2/.externalNativeBuild
+front side/TRAVHELP2/.cxx
+
