@@ -1,16 +1,52 @@
-import itertools
 import numpy as np
 import time
-import random as rd
+import random 
 tableau_patients = []
 x = 0
 n = 25
 
+debut_int=0
+fin_int=0
+milieu_int=0
+valeur_intermediaire=0
+
+
+def fixed_windows (heure_de_taf, nb_patient, largeur_int):
+    # nombre aleatoire entre 0 et n
+    #nb de quart d'heure de taf dans par exemple 6 heures de taf 
+    quart_heure_taf=heure_de_taf*4
+    #tant que on a pas le nb de patient voulu on continue
+    tab=[]
+    for i in range(nb_patient):
+        tab.append(5)
+    for i in range (nb_patient):
+        #valeur aléatoire qui va prendre une valeur entre le 0 et le dernier quart d'heure possible 
+        milieu_int=round(random.random()*quart_heure_taf)
+        # on transforme la valeur intermediaire en minutes 
+        debut_int=milieu_int-round(largeur_int/2)#on def le debut de l'intervalle (largeur_int en minutes)
+        fin_int=milieu_int+round(largeur_int/2) 
+        if (debut_int<0):
+            debut_int=0
+        elif (fin_int>quart_heure_taf):
+            fin_int=quart_heure_taf
+        print("debut_int is", debut_int)
+        print("fin_int is", fin_int)
+        debut_int*=15
+        fin_int*=15
+        tableau_patients.append([tab,[debut_int, fin_int]])
+            
+largeur = 3
+nb_patients=10
+heures_de_taf = 6       
+fixed_windows(heures_de_taf,nb_patients,largeur)
+print(tableau_patients)
+#il faudra changer l'intervalle pour ne pas avoir le meme à chaque fois 
+'''
 tableau_patients.append( [[x, 5, 4, 1, 4, 7, 4, 2, 1, 8, 2], [0, 20]])
 tableau_patients.append( [[5, x, 3, 4, 2, 8, 1, 5, 5, 6, 9], [0, 30]])
 tableau_patients.append( [[4, 3, x, 4, 3, 2, 7, 9, 10, 1, 2], [30, 40]])
 tableau_patients.append( [[1, 4, 4, x, 5, 6, 5, 3, 4, 1, 4], [20, 40]])
-tableau_patients.append( [[4, 2, 3, 5, x, 2, 4, 7, 8, 2, 1], [10, 20]])
+tableau_patients.append( [[4, 2, 3 , 5, x, 2, 4, 7, 8, 2, 1], [10, 20]])
 tableau_patients.append( [[7, 8, 2, 6, 2, x, 1, 3, 4, 5, 4], [60, 70]])
 tableau_patients.append( [[2, 3, 4, 5, 8, 1, x, 8, 2, 4, 5], [20, 50]])
 tableau_patients.append( [[6, 2, 6, 3, 4, 1, 5, x, 0, 6, 5], [30, 50]])
@@ -25,7 +61,7 @@ def make_random_patients(n):
         a = rd.randint(0, max_time)
         b = 30
         if (a - b < 0 ):
-            lower_bound = 05
+            lower_bound = 5
         else:
             lower_bound = a - b
         
@@ -38,7 +74,7 @@ def make_random_patients(n):
         tableau_patients.append([distances, [lower_bound, upper_bound] ])
 #make_random_patients(n)
 
-def trouver_min():
+def trouver_min(res):
     min = res[0][1]
     for i in range(len(res)-1):
         if res[i][1] < min:
@@ -435,3 +471,9 @@ def main():
     print("Temps d execution : %s secondes ---" % (time.time() - start_time))
     print("Temps d execution de la fonction retirer_similaire: %s secondes ---" % (similaire_time))
 main()
+'''
+
+    
+    
+
+
