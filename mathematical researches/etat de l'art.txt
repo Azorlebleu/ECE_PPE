@@ -1,0 +1,33 @@
+
+Contexte
+	optimiser le temps de trajet des infirmières
+Problématique
+	résoudre le tsptw
+Etat de l’art / Veille technologique
+	An Exact Algorithm for the TimeConstrained Traveling Salesman Problem (https://sci-hub.tw/https://doi.org/10.1287/opre.31.5.938)
+		--> First paper to expose the TSPTW. The proposed solution is really "naive" and will try every possibility. Nice to have an idea as of how to define the problem.
+=> can't be used for any algorithm purpose
+	An Optimal Algorithm for the Traveling Salesman Problem (https://sci-hub.tw/https://doi.org/10.1287/opre.43.2.367)
+		--> interesting approach, but their data set are pretty limited : only 5 intervals, not adaptable to actual data nd not exact solution
+==> narrower situations ++ but works++
+	Dynamic Programming Strategies for the Traveling Salesman Problem with Time Window and Precedence Constraints (https://sci-hub.tw/https://doi.org/10.1287/opre.45.3.365)
+		--> bases itself on precedence (meaning that each node has some specifications (have to have visited X before, etc) which reduces a lot the number of possibilities 
+==> not really our case, could be added to fit patients with diabetes
+	
+	
+
+Description de l’approche (Méthodologie)
+	création d'intervalles successifs
+Réalisation du prototype/expérimentations
+	différents profils de tournée / essai avec des tournées réelles
+Environnement de développement (Outils, langages, …)
+	python
+Scénario de fonctionnement/montage,…
+	.?.
+Evaluation du prototype (tests)
+	utilisation sur le terrain, application ?
+Conclusion et perspectives
+	avantages (réduction du nombre d'appel API, solution exacte par construction)
+	désavantages (temps d'exécution ~infini dans certains cas)
+Références Bibliographiques
+	voir état de l'art 
