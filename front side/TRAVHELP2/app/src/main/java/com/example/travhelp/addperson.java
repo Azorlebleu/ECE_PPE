@@ -21,7 +21,7 @@ public class addperson extends AppCompatActivity {
     EditText editTextName;
     EditText editTextSurname;
     TextView textView;
-
+    SQLiteDatabase db;
 
 
     @Override
@@ -49,12 +49,12 @@ public class addperson extends AppCompatActivity {
 
             }
         });
-
+        myDbHelper = new PatientsDbHelper(this);
+        db = myDbHelper.getReadableDatabase();
     }
     public void Save(View view){
-        myDbHelper = new PatientsDbHelper(getApplicationContext());
+        System.out.println("THIS IS CONTEXT " + getApplicationContext());
 
-        SQLiteDatabase db = myDbHelper.getWritableDatabase();
         System.out.println("THis is my db " + db);
         ContentValues values = new ContentValues();
         values.put(PatientsContract.PatientsEntry.COLUMN_NAME_name, "Caro");
@@ -63,8 +63,7 @@ public class addperson extends AppCompatActivity {
         values.put(PatientsContract.PatientsEntry.COLUMN_NAME_address, "Caro");
         values.put(PatientsContract.PatientsEntry.COLUMN_NAME_data, "Caro");
 
-
-// Insert the new row, returning the primary key value of the new row
+        // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(PatientsContract.PatientsEntry.TABLE_NAME, null, values);
 
         String name = editTextName.getText().toString();
