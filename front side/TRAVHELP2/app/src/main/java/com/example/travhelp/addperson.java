@@ -93,7 +93,7 @@ public class addperson extends AppCompatActivity {
         // Insert the new row, returning the primary key value of the new row
         long newRowId = db.insert(PatientsContract.PatientsEntry.TABLE_NAME, null, values);
 
-
+        finish();
 
 
     }

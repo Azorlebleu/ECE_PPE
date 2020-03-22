@@ -25,6 +25,7 @@ public class contact_directory extends AppCompatActivity {
     SQLiteDatabase db;
     private ArrayList<String> Name = new ArrayList<String>();
     private ArrayList<String> Id = new ArrayList<String>();
+    private ArrayList<String> Surname = new ArrayList<String>();
 
     ListView lv;
 
@@ -45,50 +46,50 @@ public class contact_directory extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity=new Intent(getApplicationContext(),data.class);
+                Intent otherActivity=new Intent(getApplicationContext(),addperson.class);
                 startActivity(otherActivity);
             }
         });
 
 
-
-
         lv = (ListView) findViewById(R.id.listview);
         myDbHelper = new PatientsDbHelper(this);
         db = myDbHelper.getReadableDatabase();
+
     }
     @Override
     protected void onResume() {
         displayData();
         super.onResume();
+
     }
     public void viewPatient(View v)
     {
         String tag = (String)v.getTag();
+        System.out.println("The tag  = " + tag);
 
-        System.out.println("Bonjour1 ");
-        Intent otherActivity=new Intent(getApplicationContext(),data.class);
-        System.out.println("Bonjour2");
+        Intent otherActivity= new Intent(getApplicationContext(), data.class);
         otherActivity.putExtra("id", tag);
         System.out.println("The value of the id of the next patient is " + tag);
-        System.out.println("Bonjour3");
+        startActivity(otherActivity);
     }
     private void displayData() {
         db = myDbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT name, id FROM  Patients",null);
-        System.out.println("jaja1");
+        Cursor cursor = db.rawQuery("SELECT name, id, surname FROM  Patients",null);
         Name.clear();
-        System.out.println("jaja2");
+        Surname.clear();
+        Id.clear();
+
 
         if (cursor.moveToFirst()) {
             do {
-                System.out.println("jaja_qui_se_repete");
                 Name.add(cursor.getString(cursor.getColumnIndex("name")));
                 Id.add(cursor.getString(cursor.getColumnIndex("id")));
+                Surname.add(cursor.getString(cursor.getColumnIndex("surname")));
 
             } while (cursor.moveToNext());
         }
-        CustomAdapter ca = new CustomAdapter(contact_directory.this, Name, Id);
+        CustomAdapter ca = new CustomAdapter(contact_directory.this, Name, Surname, Id);
         lv.setAdapter(ca);
         //code to set adapter to populate list
         cursor.close();

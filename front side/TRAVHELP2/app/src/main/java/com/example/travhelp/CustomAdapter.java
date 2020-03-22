@@ -16,11 +16,12 @@ public class CustomAdapter extends BaseAdapter {
     SQLiteDatabase db;
     private ArrayList<String> Id = new ArrayList<String>();
     private ArrayList<String> Name = new ArrayList<String>();
-
-    public CustomAdapter(Context  context, ArrayList<String> Name,ArrayList<String> Id)
+    private ArrayList<String> Surname = new ArrayList<String>();
+    public CustomAdapter(Context  context, ArrayList<String> Name,ArrayList<String> Surname, ArrayList<String> Id)
     {
         this.mContext = context;
         this.Name = Name;
+        this.Surname = Surname;
         this.Id = Id;
     }
     @Override
@@ -38,7 +39,6 @@ public class CustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        System.out.println("jaja5");
         final    viewHolder holder;
         controldb = new PatientsDbHelper(mContext);
         LayoutInflater layoutInflater;
@@ -47,17 +47,23 @@ public class CustomAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.layout_list_patients, null);
             holder = new viewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.tvname);
+            holder.surname = (TextView) convertView.findViewById(R.id.tvsurname);
+
         } else {
             holder = (viewHolder) convertView.getTag();
         }
 
 
         holder.name.setText(Name.get(position));
+        holder.surname.setText(Surname.get(position));
         holder.name.setTag(Id.get(position));
         convertView.setTag(Id.get(position));
+        System.out.println("Tag dans le convert view = " + convertView.getTag());
         return convertView;
     }
     public class viewHolder {
         TextView name;
+        TextView surname;
+
     }
 }
