@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".data">
+    tools:context=".update">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/id_patient"
+                    android:id="@+id/id_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
@@ -75,14 +75,14 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/name_patient"
+                <EditText
+                    android:id="@+id/name_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -100,8 +100,8 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/surname_patient"
+                <EditText
+                    android:id="@+id/surname_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
@@ -109,7 +109,7 @@
 
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -127,14 +127,14 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/adress_patient"
+                <EditText
+                    android:id="@+id/adress_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -152,15 +152,15 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/mail_patient"
+                <EditText
+                    android:id="@+id/mail_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
 
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -178,15 +178,15 @@
 
                 </TextView>
 
-                <TextView
-                    android:id="@+id/phone_patient"
+                <EditText
+                    android:id="@+id/phone_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
 
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -213,14 +213,14 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/data_patient"
+                <EditText
+                    android:id="@+id/data_patient1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center|start">
 
-                </TextView>
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -231,20 +231,22 @@
 
 
                 <Button
-                    android:id="@+id/btnModifier"
+                    android:id="@+id/btnUpdate"
+
+
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Modifier" />
+                    android:text="Update" />
 
                 <Button
-                    android:id="@+id/btnSupprimer"
+                    android:id="@+id/btnCancel"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="Supprimer" />
+                    android:text="Cancel" />
 
 
             </LinearLayout>

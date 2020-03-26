@@ -48,15 +48,10 @@ public class CustomAdapter extends BaseAdapter {
             holder = new viewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.tvname);
             holder.surname = (TextView) convertView.findViewById(R.id.tvsurname);
-
-        } else {
-            holder = (viewHolder) convertView.getTag();
+            holder.name.setText(Name.get(position));
+            holder.surname.setText(Surname.get(position));
+            holder.name.setTag(Id.get(position));
         }
-
-
-        holder.name.setText(Name.get(position));
-        holder.surname.setText(Surname.get(position));
-        holder.name.setTag(Id.get(position));
         convertView.setTag(Id.get(position));
         System.out.println("Tag dans le convert view = " + convertView.getTag());
         return convertView;

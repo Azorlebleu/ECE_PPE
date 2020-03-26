@@ -51,10 +51,6 @@ public class addperson extends AppCompatActivity {
 
 
 
-
-
-
-
         this.buttoncancel=(Button) findViewById(R.id.buttoncancel);
         buttoncancel.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,12 +7,9 @@ package com.example.travhelp;
         import android.database.sqlite.SQLiteDatabase;
         import android.os.Bundle;
         import android.widget.Button;
+        import android.widget.EditText;
         import android.widget.TextView;
         import android.view.View;
-
-
-
-        import java.util.ArrayList;
 
 public class data extends AppCompatActivity {
 
@@ -27,6 +24,7 @@ public class data extends AppCompatActivity {
     private String Data;
 
     Button btnSupprimer, btnModifier;
+    public String ID ;
 
 
     @Override
@@ -36,10 +34,9 @@ public class data extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String ID = intent.getStringExtra("id");//)Id du patient à aller chercher
+        ID = intent.getStringExtra("id");
         TextView myTextView = (TextView) findViewById(R.id.id_patient);
         myTextView.setText(ID);
-
 
         myDbHelper = new PatientsDbHelper(this);
         db = myDbHelper.getReadableDatabase();
@@ -75,7 +72,6 @@ public class data extends AppCompatActivity {
 
 
 
-
         this.btnSupprimer=findViewById(R.id.btnSupprimer);
 
 
@@ -94,5 +90,20 @@ public class data extends AppCompatActivity {
         } // fin supprimer
 
     });
-}
+
+        this.btnModifier=findViewById(R.id.btnModifier);
+        btnModifier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tag = (String)v.getTag();
+                Intent otherActivity=new Intent(getApplicationContext(),update.class);
+                otherActivity.putExtra("id", ID);
+                System.out.println("OOOOOOOOOOOOOOOOOOOOOOO " + ID);
+                startActivity(otherActivity);
+
+                onBackPressed();
+            } // fin supprimer
+
+        });
     }
+}
