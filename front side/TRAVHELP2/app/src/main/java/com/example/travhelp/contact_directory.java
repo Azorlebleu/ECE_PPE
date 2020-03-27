@@ -112,5 +112,10 @@ public class contact_directory extends AppCompatActivity {
 
         cursor.close();
     }
+
+    public void savePatientsInDatabase(View v)
+    {
+
+    }
 }
 

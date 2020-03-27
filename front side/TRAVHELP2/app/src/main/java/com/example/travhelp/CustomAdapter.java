@@ -75,4 +75,5 @@ public class CustomAdapter extends BaseAdapter {
         TextView name;
         TextView surname;
     }
+
 }
