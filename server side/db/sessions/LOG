@@ -1,14 +1,14 @@
-2020/03/19-15:06:27.037 3e60 Recovering log #129
-2020/03/19-15:06:27.037 3e60 Level-0 table #131: started
-2020/03/19-15:06:27.259 3e60 Level-0 table #131: 319 bytes OK
-2020/03/19-15:06:27.735 3e60 Delete type=0 #129
-2020/03/19-15:06:27.735 3e60 Delete type=3 #127
-2020/03/19-15:06:27.735 3f18 Compacting 4@0 + 1@1 files
-2020/03/19-15:06:27.776 3f18 Generated table #133@0: 2 keys, 307 bytes
-2020/03/19-15:06:27.776 3f18 Compacted 4@0 + 1@1 files => 307 bytes
-2020/03/19-15:06:27.875 3f18 compacted to: files[ 0 1 0 0 0 0 0 ]
-2020/03/19-15:06:27.876 3f18 Delete type=2 #120
-2020/03/19-15:06:27.876 3f18 Delete type=2 #122
-2020/03/19-15:06:27.876 3f18 Delete type=2 #125
-2020/03/19-15:06:27.877 3f18 Delete type=2 #128
-2020/03/19-15:06:27.877 3f18 Delete type=2 #131
+2020/03/23-16:00:46.922 da0 Recovering log #168
+2020/03/23-16:00:46.923 da0 Level-0 table #170: started
+2020/03/23-16:00:47.014 da0 Level-0 table #170: 319 bytes OK
+2020/03/23-16:00:47.364 da0 Delete type=0 #168
+2020/03/23-16:00:47.395 da0 Delete type=3 #166
+2020/03/23-16:00:47.433 1de0 Compacting 4@0 + 1@1 files
+2020/03/23-16:00:47.464 1de0 Generated table #172@0: 19 keys, 1069 bytes
+2020/03/23-16:00:47.464 1de0 Compacted 4@0 + 1@1 files => 1069 bytes
+2020/03/23-16:00:47.488 1de0 compacted to: files[ 0 1 0 0 0 0 0 ]
+2020/03/23-16:00:47.488 1de0 Delete type=2 #159
+2020/03/23-16:00:47.488 1de0 Delete type=2 #161
+2020/03/23-16:00:47.489 1de0 Delete type=2 #164
+2020/03/23-16:00:47.489 1de0 Delete type=2 #167
+2020/03/23-16:00:47.489 1de0 Delete type=2 #170

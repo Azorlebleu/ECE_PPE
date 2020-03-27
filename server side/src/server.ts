@@ -46,8 +46,12 @@ app.get('/api/all-nurses', (req: any, res: any) => {
 app.get('/api/all-patients', (req: any, res: any) => {
   dbPatient.see_all((err: Error | null, result?: any) => {
     if (err) throw err
-    res.json(result)
+    res.json({"res": result})
   })
+})
+
+app.get('/TEST', (req: any, res: any) => {
+  res.status(200).send(({"ok":[1,2]}))
 })
 //add new nurse
 /*

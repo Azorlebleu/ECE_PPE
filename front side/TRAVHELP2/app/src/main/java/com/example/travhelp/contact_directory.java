@@ -34,19 +34,15 @@ public class contact_directory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_directory);
 
-
-
-
+        //Sets the title
         getSupportActionBar().setTitle("CONTACTS DIRECTORY");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         this.add=findViewById(R.id.add);
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity=new Intent(getApplicationContext(),addperson.class);
+                Intent otherActivity=new Intent(getApplicationContext(), addperson.class);
                 startActivity(otherActivity);
             }
         });
@@ -86,7 +82,6 @@ public class contact_directory extends AppCompatActivity {
                 Name.add(cursor.getString(cursor.getColumnIndex("name")));
                 Id.add(cursor.getString(cursor.getColumnIndex("id")));
                 Surname.add(cursor.getString(cursor.getColumnIndex("surname")));
-
             } while (cursor.moveToNext());
         }
         CustomAdapter ca = new CustomAdapter(contact_directory.this, Name, Surname, Id);

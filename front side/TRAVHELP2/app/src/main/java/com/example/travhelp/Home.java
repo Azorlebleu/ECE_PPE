@@ -20,8 +20,6 @@ public class Home extends AppCompatActivity {
 
 
         this.button1=findViewById(R.id.button1);
-
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,8 +30,6 @@ public class Home extends AppCompatActivity {
         });
 
         this.button2=findViewById(R.id.button2);
-
-
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
