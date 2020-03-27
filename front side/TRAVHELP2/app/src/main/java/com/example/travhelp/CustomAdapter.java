@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+
 //Used to list all the patients
 //Uses the template in the  layout_list_patients.xml file
 public class CustomAdapter extends BaseAdapter {
@@ -24,7 +26,7 @@ public class CustomAdapter extends BaseAdapter {
         this.Surname = Surname;
         this.Id = Id;
     }
-    //Will display Name.size() rowstimes
+
     @Override
     public int getCount() {
         return Name.size();
@@ -40,6 +42,9 @@ public class CustomAdapter extends BaseAdapter {
         return 0;
     }
 
+
+    //The getView method will be called getCount() times, and will add up the different patients
+    //thus building the final list of all patients
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final    viewHolder holder;
@@ -48,7 +53,7 @@ public class CustomAdapter extends BaseAdapter {
 
         //if the patient's layout has not yet been done, we fill it in
         if (convertView == null) {
-            //To inflate a patient's template
+            //To inflate the patient's template
             layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.layout_list_patients, null);
 
