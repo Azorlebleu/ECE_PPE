@@ -11,6 +11,8 @@
         android:id="@+id/tvname"
         android:layout_marginLeft="15dp"
         android:textSize="70px"
+        android:textStyle="bold"
+
         />
 
     <TextView
