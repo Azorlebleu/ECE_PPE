@@ -46,7 +46,7 @@ app.get('/api/all-nurses', (req: any, res: any) => {
 app.get('/api/all-patients', (req: any, res: any) => {
   dbPatient.see_all((err: Error | null, result?: any) => {
     if (err) throw err
-    res.json({"res": result})
+    res.json(result)
   })
 })
 
@@ -108,8 +108,8 @@ app.delete('/api/delete-nurse/', (req: any, res: any) => {
 app.post('/api/new-patient/', (req: any, res: any) => {
   console.log("Saving patient :", req.body)
   dbPatient.save(req.body.id_nurse, req.body.id_patient, req.body, (err: Error | null) => {
-    if (err) res.status(500).send("error")
-    res.status(200).send("saved")
+    if (err) res.status(500).send({"error": "error"});
+    res.status(200).send({"ok": "Patient saved succesfully"})
   })
 })
 
