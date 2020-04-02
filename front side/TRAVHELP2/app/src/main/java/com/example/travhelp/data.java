@@ -53,7 +53,6 @@ public class data extends AppCompatActivity {
             } while (cursor.moveToNext());
         }
 
-
         TextView myTextViewName = (TextView) findViewById(R.id.name_patient);
         TextView myTextViewSurname = (TextView) findViewById(R.id.surname_patient);
         TextView myTextViewAddress = (TextView) findViewById(R.id.adress_patient);
@@ -70,11 +69,7 @@ public class data extends AppCompatActivity {
 
         cursor.close();
 
-
-
         this.btnSupprimer=findViewById(R.id.btnSupprimer);
-
-
         btnSupprimer.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -96,12 +91,9 @@ public class data extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String tag = (String)v.getTag();
-                Intent otherActivity=new Intent(getApplicationContext(),update.class);
+                Intent otherActivity=new Intent(getApplicationContext(), update.class);
                 otherActivity.putExtra("id", ID);
-                System.out.println("OOOOOOOOOOOOOOOOOOOOOOO " + ID);
                 startActivity(otherActivity);
-
-                onBackPressed();
             } // fin supprimer
 
         });

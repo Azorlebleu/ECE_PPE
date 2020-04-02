@@ -33,7 +33,7 @@ public class Home extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity=new Intent(getApplicationContext(),GPS.class);
+                Intent otherActivity=new Intent(getApplicationContext(), GPS.class);
                 startActivity(otherActivity);
 
             }

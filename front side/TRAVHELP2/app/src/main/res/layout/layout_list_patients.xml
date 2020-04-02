@@ -8,17 +8,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/tvname"
+        android:id="@+id/tvsurname"
         android:layout_marginLeft="15dp"
         android:textSize="70px"
         android:textStyle="bold"
-
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/tvsurname"
+        android:id="@+id/tvname"
         android:layout_marginLeft="10dp"
         android:onClick="viewPatient"
         android:textSize="70px"

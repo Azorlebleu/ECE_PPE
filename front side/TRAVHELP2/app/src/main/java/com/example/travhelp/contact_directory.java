@@ -17,11 +17,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.travhelp.R;
 import com.example.travhelp.addperson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 
 public class contact_directory extends AppCompatActivity {
     private ImageView add;
+    private Button save_in_database;
     public PatientsDbHelper myDbHelper;
     public SQLiteDatabase db;
     private ArrayList<String> Name = new ArrayList<String>();
@@ -49,6 +53,14 @@ public class contact_directory extends AppCompatActivity {
             }
         });
 
+        save_in_database = (Button)findViewById(R.id.save_in_database);
+        save_in_database.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    savePatientsInDatabase();
+                                                }
+                                            }
+        );
         lv = (ListView) findViewById(R.id.listview);
 
         //Instanciating the database in a thread for better performances
@@ -66,13 +78,11 @@ public class contact_directory extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         //ensures that the thread has come to completion and has instanciated the ReadableDatabase before trying to access the database on the first run
         while (db == null){}
 
         //Fills the database
         displayData();
-
     }
 
     //Function called to open the activity where we see one patient's data
@@ -90,7 +100,7 @@ public class contact_directory extends AppCompatActivity {
     private void displayData() {
 
         //Get all the patients in a Cursor object which lets us extract the data within it easily
-        Cursor cursor = db.rawQuery("SELECT name, id, surname FROM  Patients",null);
+        Cursor cursor = db.rawQuery("SELECT name, id, surname FROM  Patients ORDER BY surname",null);
 
         //Erase lists from previous iteration to avoid printing data twice
         Name.clear();
@@ -103,6 +113,7 @@ public class contact_directory extends AppCompatActivity {
                 Name.add(cursor.getString(cursor.getColumnIndex("name")));
                 Id.add(cursor.getString(cursor.getColumnIndex("id")));
                 Surname.add(cursor.getString(cursor.getColumnIndex("surname")));
+                System.out.println(Name.toString());
             } while (cursor.moveToNext());
         }
 
@@ -113,9 +124,30 @@ public class contact_directory extends AppCompatActivity {
         cursor.close();
     }
 
-    public void savePatientsInDatabase(View v)
-    {
+    public void savePatientsInDatabase()  {
+        //Gets all data to send in a Cursor item
+        Cursor cursor = db.rawQuery("SELECT * FROM  Patients",null);
 
+        //Creates a JSON object for each patient
+        if (cursor.moveToFirst()) {
+            do {
+                JSONObject data = new JSONObject();
+                try {
+                    data.put("id_nurse", "1");
+                    data.put("id_patient", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry._ID)));
+                    data.put("name", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_name)));
+                    data.put("address", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_address )));
+                    data.put("notes", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_data)) );
+                    data.put("number", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_phone)) );
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                //Send the data to the address
+                new myPostHTTP().execute("http://10.0.2.2:8080/api/new-patient", data);
+            }
+            while (cursor.moveToNext());
+        }
     }
 }
 

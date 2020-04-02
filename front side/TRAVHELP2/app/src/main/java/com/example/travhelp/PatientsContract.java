@@ -6,8 +6,8 @@ public class PatientsContract {
 
     private PatientsContract() {}
 
-    /* Inner class that defines the table contents */
-        public static class PatientsEntry implements BaseColumns {
+        //Acts like a declaration of the table.
+    public static class PatientsEntry implements BaseColumns {
         public static final String TABLE_NAME = "patients";
         public static final String _ID = "id";
         public static final String COLUMN_NAME_name = "name";
@@ -17,6 +17,4 @@ public class PatientsContract {
         public static final String COLUMN_NAME_data = "data";
         public static final String COLUMN_NAME_phone = "phone";
     }
-
-
 }

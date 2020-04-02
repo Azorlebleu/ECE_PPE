@@ -5,10 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-
-
-
-
+//Create the Database from the information stored in the contract
 public class PatientsDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + PatientsContract.PatientsEntry.TABLE_NAME + " (" +
@@ -28,8 +25,6 @@ public class PatientsDbHelper extends SQLiteOpenHelper {
 
     public PatientsDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        System.out.println("Constructor called");
-
     }
 
     public void onCreate(SQLiteDatabase db) {
@@ -45,11 +40,5 @@ public class PatientsDbHelper extends SQLiteOpenHelper {
     }
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
-    }
-
-    public Cursor getListContents(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT name FROM " + PatientsContract.PatientsEntry.TABLE_NAME, null);
-        return data;
     }
 }
