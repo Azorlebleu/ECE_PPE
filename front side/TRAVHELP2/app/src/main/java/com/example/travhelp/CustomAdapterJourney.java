@@ -6,26 +6,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
 import java.util.ArrayList;
 
 
 //Used to list all the patients
 //Uses the template in the  layout_list_patients.xml file
-public class CustomAdapter extends BaseAdapter {
+public class CustomAdapterJourney extends BaseAdapter {
     private Context mContext;
     PatientsDbHelper controldb;
-    private ArrayList<String> Id = new ArrayList<String>();
     private ArrayList<String> Name = new ArrayList<String>();
     private ArrayList<String> Surname = new ArrayList<String>();
-//such style !!!
-    public CustomAdapter(Context  context, ArrayList<String> Name,ArrayList<String> Surname, ArrayList<String> Id)
+    private ArrayList<String> Time = new ArrayList<String>();
+    private ArrayList<String> Address = new ArrayList<String>();
+
+
+    public CustomAdapterJourney(Context  context, ArrayList<String> Name, ArrayList<String> Surname, ArrayList<String> Address, ArrayList<String> Time)
     {
         this.mContext = context;
         this.Name = Name;
         this.Surname = Surname;
-        this.Id = Id;
+        this.Address = Address;
+        this.Time = Time;
     }
 
     @Override
@@ -43,6 +45,7 @@ public class CustomAdapter extends BaseAdapter {
         return 0;
     }
 
+
     //The getView method will be called getCount() times, and will add up the different patients
     //thus building the final list of all patients
     @Override
@@ -55,24 +58,22 @@ public class CustomAdapter extends BaseAdapter {
         if (convertView == null) {
             //To inflate the patient's template
             layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.layout_list_patients, null);
+            convertView = layoutInflater.inflate(R.layout.layout_list_patients_journey, null);
 
             //Creates a viewHolder with 2 TextViews : name and surname
             holder = new viewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.tvname);
-            holder.surname = (TextView) convertView.findViewById(R.id.tvsurname);
-            holder.check = (CheckBox) convertView.findViewById(R.id.check);
+            holder.surname = (TextView) convertView.findViewById(R.id.tvsurname);;
+            holder.address = (TextView) convertView.findViewById(R.id.tvaddress);;
+            holder.time = (TextView) convertView.findViewById(R.id.tvtime);
+
             //Fill in the viewHolder
             holder.name.setText(Name.get(position));
             holder.surname.setText(Surname.get(position));
-            holder.check.setTag(Id.get(position));
-            holder.surname.setTag(Id.get(position));
-            holder.name.setTag(Id.get(position));
-            System.out.println("Tag dans le convert view name= " + holder.name.getTag());
-            System.out.println("Tag dans le convert view surname= " + holder.surname.getTag());
+            holder.address.setText(Address.get(position));
+            holder.time.setText(Time.get(position));
         }
         //Set the ID in the patient's tag, to know which one to display in the database
-        convertView.setTag(Id.get(position));
 
         System.out.println("Tag dans le convert view = " + convertView.getTag());
         return convertView;
@@ -80,7 +81,9 @@ public class CustomAdapter extends BaseAdapter {
     public class viewHolder {
         TextView name;
         TextView surname;
-        CheckBox check;
+        TextView address;
+        TextView time;
+
     }
 
 }

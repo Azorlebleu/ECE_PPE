@@ -38,10 +38,12 @@ public class data extends AppCompatActivity {
         TextView myTextView = (TextView) findViewById(R.id.id_patient);
         myTextView.setText(ID);
 
+        System.out.println("LOL ICI CA VAUT ="+ID);
+
         myDbHelper = new PatientsDbHelper(this);
         db = myDbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM  Patients WHERE id =" + ID, null);
-
+        Cursor cursor = db.rawQuery("SELECT * FROM  patients WHERE id =" + ID, null);
+        System.out.println("LOL ICI CA VAUT ="+ID);
         if (cursor.moveToFirst()) {
             do {
                 Name = (cursor.getString(cursor.getColumnIndex("name")));
@@ -52,6 +54,7 @@ public class data extends AppCompatActivity {
                 Data = (cursor.getString(cursor.getColumnIndex("data")));
             } while (cursor.moveToNext());
         }
+        System.out.println("LOL ICI CA VAUT ="+ID);
 
         TextView myTextViewName = (TextView) findViewById(R.id.name_patient);
         TextView myTextViewSurname = (TextView) findViewById(R.id.surname_patient);
@@ -59,7 +62,7 @@ public class data extends AppCompatActivity {
         TextView myTextViewMail = (TextView) findViewById(R.id.mail_patient);
         TextView myTextViewData = (TextView) findViewById(R.id.data_patient);
         TextView myTextViewPhone = (TextView) findViewById(R.id.phone_patient);
-
+        System.out.println("LOL ICI CA VAUT ="+ID);
         myTextViewName.setText(Name);
         myTextViewSurname.setText(Surname);
         myTextViewAddress.setText(Address);

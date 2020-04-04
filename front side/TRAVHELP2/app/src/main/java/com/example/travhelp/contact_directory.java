@@ -1,5 +1,6 @@
 package com.example.travhelp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -26,8 +28,11 @@ import java.util.ArrayList;
 public class contact_directory extends AppCompatActivity {
     private ImageView add;
     private Button save_in_database;
+    private Button selection;
     public PatientsDbHelper myDbHelper;
+    public SelectionDbHelper mySelectionDbHelper;
     public SQLiteDatabase db;
+    public SQLiteDatabase db_selection;
     private ArrayList<String> Name = new ArrayList<String>();
     private ArrayList<String> Id = new ArrayList<String>();
     private ArrayList<String> Surname = new ArrayList<String>();
@@ -61,6 +66,15 @@ public class contact_directory extends AppCompatActivity {
                                                 }
                                             }
         );
+        selection = (Button)findViewById(R.id.selection);
+        selection.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View view) {
+                                                    SelectionPatients();
+                                                }
+                                            }
+        );
+
         lv = (ListView) findViewById(R.id.listview);
 
         //Instanciating the database in a thread for better performances
@@ -70,6 +84,9 @@ public class contact_directory extends AppCompatActivity {
             public void run() {
                 myDbHelper = new PatientsDbHelper(context);
                 db = myDbHelper.getReadableDatabase();
+                mySelectionDbHelper = new SelectionDbHelper(context);
+                db_selection = mySelectionDbHelper.getWritableDatabase();
+
             }
         };
         thread.start();
@@ -83,6 +100,9 @@ public class contact_directory extends AppCompatActivity {
 
         //Fills the database
         displayData();
+        while(db_selection==null){}
+        System.out.println("Deleting all");
+        db_selection.delete("selection",   "1=1" , null);
     }
 
     //Function called to open the activity where we see one patient's data
@@ -92,6 +112,7 @@ public class contact_directory extends AppCompatActivity {
         String tag = (String)v.getTag();
 
         Intent otherActivity= new Intent(getApplicationContext(), data.class);
+        System.out.println("Viewing patient with tag " + tag);
         otherActivity.putExtra("id", tag);
         startActivity(otherActivity);
     }
@@ -149,5 +170,50 @@ public class contact_directory extends AppCompatActivity {
             while (cursor.moveToNext());
         }
     }
-}
 
+    public void SelectionPatients()  {
+
+        Intent otherActivity=new Intent(getApplicationContext(),Selected_Patients.class);
+        startActivity(otherActivity);
+    }
+
+    public void MyHandler(View view) {
+        CheckBox cb = (CheckBox) view;
+        //on récupère la position à l'aide du tag défini dans la classe MyListAdapter
+        int position = Integer.parseInt(cb.getTag().toString());
+        System.out.println("ID du patient à ajoute rdans la base de données selection : " + position);
+        Cursor cursor = db.rawQuery("SELECT * FROM  Patients WHERE id = " + position,null);
+        Cursor cursor_position = db_selection.rawQuery("SELECT * FROM selection WHERE id =" + position, null );
+
+        if (cursor_position.moveToFirst())
+        {
+            if (!cb.isChecked()) {
+                System.out.println("deleting this patient (jaja)");
+                db_selection.delete("selection",   "id =" + position, null);
+                //db.rawQuery("CREATE TABLE selection AS SELECT  Patients",null);
+                //ajouter les patient sélectionnés dans la tabledelection
+            }
+        }
+        else
+        {
+            //On change la couleur
+            if (cb.isChecked()) {
+                System.out.println("adding new patient to be selested for the 1st time");
+                if (cursor.moveToFirst()){
+                    ContentValues values = new ContentValues();
+                    values.put(SelectionContract.SelectionEntry._ID, position);
+                    values.put(SelectionContract.SelectionEntry.COLUMN_NAME_name, cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_name)));
+                    values.put(SelectionContract.SelectionEntry.COLUMN_NAME_surname, cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_surname)));
+                    values.put(SelectionContract.SelectionEntry.COLUMN_NAME_address, cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_address)));
+                    // Insert the new row in the database
+                    db_selection.insert(SelectionContract.SelectionEntry.TABLE_NAME, null, values);
+                }
+
+            }
+
+        }
+    }
+
+
+
+}

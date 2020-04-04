@@ -38,6 +38,9 @@ public class update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
+        getSupportActionBar().setTitle("UPDATE");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
 
         ID2 = intent.getStringExtra("id");//)Id du patient à aller chercher

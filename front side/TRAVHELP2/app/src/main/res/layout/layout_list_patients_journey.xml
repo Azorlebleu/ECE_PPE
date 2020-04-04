@@ -13,11 +13,17 @@
         tools:layout_editor_absoluteX="0dp"
         tools:ignore="MissingConstraints"
         android:baselineAligned="false">
+
+
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
+
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -27,61 +33,74 @@
                 <TextView
                     android:id="@+id/tvsurname"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="bottom|center"
-                    ></TextView>
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:gravity="center_vertical"
+                    >
+
+                </TextView>
 
                 <TextView
                     android:id="@+id/tvname"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="bottom|center">
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center|start">
                 </TextView>
+
 
                 <TextView
-                    android:id="@+id/tvaddress"
+                    android:id="@+id/tvtime"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
                     android:layout_weight="1"
-                    android:gravity="bottom|center">
+
+
+                    android:gravity="right">
+
                 </TextView>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/ettime_min"
+                </LinearLayout>
+                <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="bottom|center"
-                    android:text="Time min"></EditText>
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical"
+                    android:id="@+id/tvaddress">
 
-                <EditText
-                    android:id="@+id/ettime_max"
+                </TextView>
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="bottom|center"
-                    android:text="Time max"></EditText>
-
-                <EditText
-                    android:id="@+id/etduration"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="bottom|center"
-                    android:text="Duration"></EditText>
+                    android:orientation="horizontal">
+                </LinearLayout>
 
             </LinearLayout>
+
+
+
+
+
 
 
         </LinearLayout>
+
     </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
