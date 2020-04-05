@@ -38,7 +38,7 @@ public class update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        getSupportActionBar().setTitle("UPDATE");
+        getSupportActionBar().setTitle(R.string.fr_mis_a_jour);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();

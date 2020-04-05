@@ -31,7 +31,7 @@ public class tournee extends AppCompatActivity {
         setContentView(R.layout.activity_tournee);
 
         //Sets the title and display it
-        getSupportActionBar().setTitle("MY NEW JOURNEY");
+        getSupportActionBar().setTitle(R.string.fr_my_new_journey);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

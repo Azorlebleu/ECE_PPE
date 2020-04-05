@@ -45,7 +45,7 @@ public class contact_directory extends AppCompatActivity {
         setContentView(R.layout.activity_contact_directory);
 
         //Sets the title and display it
-        getSupportActionBar().setTitle("CONTACTS DIRECTORY");
+        getSupportActionBar().setTitle(R.string.fr_contact_directory);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Add new person button

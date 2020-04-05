@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TRAVHELP</string>
+    <string name="fr_title_data_patient">files patient N</string>
+    <string name="fr_name_data_patient">Name:</string>
+    <string name="fr_surname_data_patient">Surname:</string>
+    <string name="fr_address_data_patient">Address:</string>
+    <string name="fr_mail_data_patient">Mail:</string>
+    <string name="fr_data_data_patient">Informations</string>
+    <string name="fr_phone_data_patient">Phone number:</string>
+    <string name="my_new_journey">"My new journey "</string>
+    <string name="welcome_on_trav_help">"welcome on TRAV'HELP ! "</string>
+    <string name="cancel">Cancel</string>
+    <string name="time_min">Time min ?</string>
+    <string name="time_max">Time max ?</string>
+    <string name="duration">Duration ?</string>
+    <string name="fr_contact_directory">"contact directory "</string>
+    <string name="fr_travhelp_home">TRAV\'HELP HOME</string>
+    <string name="fr_my_new_journey">"My new journey "</string>
+    <string name="fr_mis_a_jour">update</string>
+    <string name="call_the_database">Call of the database</string>
+    <string name="save_in_the_database">Save in the database</string>
+    <string name="choose">Choose</string>
+    <string name="surname">SURNAME:</string>
+    <string name="name">NAME:</string>
+    <string name="adress">ADDRESS:</string>
+    <string name="mail">MAIL:</string>
+    <string name="phone">PHONE:</string>
+    <string name="datas">DATAS:</string>
+    <string name="save">SAVE:</string>
+    <string name="contacts_directory">"contact directory "</string>
+    <string name="my_journey">"my journey "</string>
+    <string name="or">"or "</string>
+</resources>

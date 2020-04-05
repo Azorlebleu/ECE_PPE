@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:text="Time min ?"
+                    android:text="@string/time_min"
                     android:textSize="15dp"
                     android:textColor="#18CEC7"></EditText>
 
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:text="Time max ?"
+                    android:text="@string/time_max"
                     android:textSize="15dp"
                     android:textColor="#18CEC7"></EditText>
 
@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="bottom|center"
-                    android:text="Duration ?"
+                    android:text="@string/duration"
                     android:textSize="15dp"
                     android:textColor="#18CEC7"></EditText>
 

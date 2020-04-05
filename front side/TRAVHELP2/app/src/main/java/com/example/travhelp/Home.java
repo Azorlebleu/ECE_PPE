@@ -17,7 +17,7 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setTitle("TRAV'HELP HOME");
+        getSupportActionBar().setTitle(R.string.fr_travhelp_home);
 
 
 

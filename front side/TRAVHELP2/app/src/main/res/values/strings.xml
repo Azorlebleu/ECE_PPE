@@ -1,25 +1,39 @@
 <resources>
     <string name="app_name">TRAVHELP</string>
-    <string name="textviewaaaaaaaaaaaaa">TextViewaaaaaaaaaaaaa</string>
-    <string name="en_title_data_patient">File Patient N°</string>
+    <string name="textviewaaaaaaaaaaaaa" translatable="false">TextViewaaaaaaaaaaaaa</string>
     <string name="fr_title_data_patient">Données du Patient N°</string>
 
-    <string name="en_name_data_patient">Name:</string>
     <string name="fr_name_data_patient">Nom:</string>
-
-    <string name="en_surname_data_patient">Surnam:</string>
     <string name="fr_surname_data_patient">Prénom:</string>
-
-    <string name="en_address_data_patient">Address:</string>
     <string name="fr_address_data_patient">Adresse:</string>
-
-    <string name="en_mail_data_patient">Email:</string>
     <string name="fr_mail_data_patient">Email:</string>
-
-    <string name="en_data_data_patient">Datas:</string>
     <string name="fr_data_data_patient">Données:</string>
 
-    <string name="en_phone_data_patient">Phone:</string>
+    <string name="fr_contact_directory">Liste des Contacts</string>
+    <string name="fr_travhelp_home"> Acceuil de TRAV\'HELP</string>
+    <string name="fr_my_new_journey">Mon nouveau trajet</string>
+    <string name="fr_mis_a_jour">mis à jour</string>
+
+
     <string name="fr_phone_data_patient">Téléphone:</string>
+    <string name="welcome_on_trav_help">Bienvenue sur TRAV\'HELP !</string>
+    <string name="my_new_journey">Mon nouveau Trajet</string>
+    <string name="cancel">Annulé</string>
+    <string name="time_min">Temps minimum ?</string>
+    <string name="time_max">Temps maximum ?</string>
+    <string name="duration">Durée ?</string>
+    <string name="call_the_database">Appel base de données</string>
+    <string name="save_in_the_database">enregisté dans la base de données</string>
+    <string name="choose">Choisis </string>
+    <string name="surname">NOM:</string>
+    <string name="name">PRENOM:</string>
+    <string name="adress">ADRESS:</string>
+    <string name="mail">EMAIL:</string>
+    <string name="phone">TEL:</string>
+    <string name="datas">INFOS:</string>
+    <string name="save">SAUVEGARDER</string>
+    <string name="contacts_directory">Liste des contacts</string>
+    <string name="my_journey">Mon trajet</string>
+    <string name="or">Ou</string>
 
 </resources>

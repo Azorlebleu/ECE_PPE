@@ -40,7 +40,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.3"
                 android:gravity="center"
-                android:text="MY NEW JOURNEY"
+                android:text="@string/my_new_journey"
                 android:textSize="20dp"></TextView>
 
             <LinearLayout
@@ -65,7 +65,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:onClick="getJourney"
-                    android:text="Call The DataBase"></Button>
+                    android:text="@string/call_the_database"></Button>
 
 
 

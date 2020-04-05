@@ -48,7 +48,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:id="@+id/save_in_database"
-                    android:text="Save in the DataBase"></Button>
+                    android:text="@string/save_in_the_database"></Button>
 
                 <Button
                     android:layout_width="0dp"
@@ -56,7 +56,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:id="@+id/selection"
-                    android:text="Choose"></Button>
+                    android:text="@string/choose"></Button>
 
                 <ImageView
                     android:id="@+id/add"
