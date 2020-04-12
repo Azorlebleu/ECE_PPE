@@ -46,7 +46,7 @@ public class addperson extends AppCompatActivity {
             }
         });
         myDbHelper = new PatientsDbHelper(this);
-        db = myDbHelper.getReadableDatabase();
+        db = myDbHelper.getWritableDatabase();
     }
 
 

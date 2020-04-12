@@ -525,5 +525,5 @@ def main():
     plt.title('Variable patient.')
     plt.savefig('barchart_horizontal_matplotlib.png')
     plt.show()
-plot(6,10,5,2)  
+plot(6,8,5,2)  
 main()

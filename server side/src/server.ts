@@ -62,6 +62,34 @@ app.get('/TEST', (req: any, res: any) => {
   "password": "lolilol123"
 }
 */
+
+app.get('/api/my-journey', (req: any, res: any) => {
+
+  var my_journey = [
+    {
+      "name":"Jean",
+      "surname":"Dupond",
+      "time":"8h30",
+      "address":"4 rue de la mare Jouane Saint Arnoult en Yvelines France"
+    },
+    {
+      "name":"Anouk",
+      "surname":"Costa",
+      "time":"9h00",
+      "address":"15 rue André Thome Sonchamp France"
+    },
+    {
+      "name":"Alice",
+      "surname":"Simon",
+      "time":"9h30",
+      "address":"26 rue des paradis Saint Arnoult en Yvelines France"
+    }
+  ]
+  res.status(200).send(my_journey)
+});
+
+
+
 app.post('/api/new-nurse/', (req: any, res: any) => {
   console.log("Saving nurse :", req.body)
   dbNurse.save(req.body.id_nurse, req.body, (err: Error | null) => {
