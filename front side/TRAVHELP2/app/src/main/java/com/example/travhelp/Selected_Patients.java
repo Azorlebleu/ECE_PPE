@@ -128,34 +128,6 @@ public class Selected_Patients extends AppCompatActivity {
 
         cursor.close();
     }
-
-    public void savePatientsInDatabase()  {
-        //Gets all data to send in a Cursor item
-        Cursor cursor = db.rawQuery("SELECT * FROM  patients",null);
-
-        //Creates a JSON object for each patient
-        if (cursor.moveToFirst()) {
-            do {
-                JSONObject data = new JSONObject();
-                try {
-                    data.put("id_nurse", "1");
-                    data.put("id_patient", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry._ID)));
-                    data.put("name", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_name)));
-                    data.put("address", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_address )));
-                    data.put("notes", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_data)) );
-                    data.put("number", cursor.getString(cursor.getColumnIndex(PatientsContract.PatientsEntry.COLUMN_NAME_phone)) );
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                //Send the data to the address
-                new myPostHTTP().execute("http://10.0.2.2:8080/api/new-patient", data);
-            }
-            while (cursor.moveToNext());
-        }
-    }
-
-
 }
 
 
