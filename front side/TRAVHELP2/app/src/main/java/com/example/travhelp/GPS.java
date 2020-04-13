@@ -222,4 +222,3 @@ public class GPS extends AppCompatActivity implements LocationListener,OnMapRead
      */
 
 }
-}
