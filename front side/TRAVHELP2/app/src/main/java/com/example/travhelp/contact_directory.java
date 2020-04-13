@@ -190,13 +190,10 @@ public class contact_directory extends AppCompatActivity {
             if (!cb.isChecked()) {
                 System.out.println("deleting this patient (jaja)");
                 db_selection.delete("selection",   "id =" + position, null);
-                //db.rawQuery("CREATE TABLE selection AS SELECT  Patients",null);
-                //ajouter les patient sélectionnés dans la tabledelection
             }
         }
         else
         {
-            //On change la couleur
             if (cb.isChecked()) {
                 System.out.println("adding new patient to be selested for the 1st time");
                 if (cursor.moveToFirst()){
