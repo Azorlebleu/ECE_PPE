@@ -6,6 +6,8 @@
       <module fileurl="file://$PROJECT_DIR$/../TRAVHELP2.iml" filepath="$PROJECT_DIR$/../TRAVHELP2.iml" group="TRAVHELP2" />
       <module fileurl="file://$PROJECT_DIR$/TRAVHELP2-app.iml" filepath="$PROJECT_DIR$/TRAVHELP2-app.iml" group="TRAVHELP2/app" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" group="TRAVHELP/app" />
+      <module fileurl="file://$PROJECT_DIR$/../front side-TRAVHELP2.iml" filepath="$PROJECT_DIR$/../front side-TRAVHELP2.iml" group="TRAVHELP2" />
+      <module fileurl="file://$PROJECT_DIR$/front side-TRAVHELP2-app.iml" filepath="$PROJECT_DIR$/front side-TRAVHELP2-app.iml" group="TRAVHELP2/app" />
     </modules>
   </component>
 </project>
